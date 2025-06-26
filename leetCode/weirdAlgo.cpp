@@ -2,7 +2,6 @@
 using namespace std;
 // finding how many computations it will take to get to the integer 1 for any given positive integer
 int algo(int input);
-
 int main() {
     int input;// for user to input the given integer they want
     cout << "Enter number: ";
@@ -25,16 +24,18 @@ int main() {
 
 int algo(int input) {
     int counter{};// it will count the amount of computations the algorithm makes
-    cout << "Sequence: " << input;
+    std::cout << "Sequence: " << input;
     while (input != 1) {
         if (input % 2 == 0) {// finding even integers and dividing them by two
             input /= 2;
         } else {  // will take odd integers and multiply them by 3 and add 1 afterwards
             input = (input * 3) + 1;
         }
-        cout << " -> " << input;
+        std::cout << " -> " << input;
         counter++;
     }
-    cout << '\n';
+    std::cout << '\n';
     return counter;
 }
+
+
