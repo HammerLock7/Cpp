@@ -13,7 +13,7 @@ int main(){
     double exams[2];// Array for exam marks
     double finalMark[6];// Array for final marks
     size_t size= sizeof(modules)/sizeof(modules[0]);// size for the modules im doing 
-    int answer;
+    int answer;// object to store input from user
     int counter{};
     cout<<"For which module do you want to check: \n";
 
@@ -28,7 +28,7 @@ int main(){
         counter=0;
 
         cin>> answer;
-        double results;
+        double results;//stores values returned by functions
         switch (answer)
         {
         case 1:
@@ -124,28 +124,28 @@ int main(){
 }
 
 double semester1(){
-    double sem1;
+    double sem1;//stores user input
     cout<<"Enter your semester 1 mark: ";
     cin>>sem1;
     return sem1;
 }
 
 double semester2(){
-    double sem2;
+    double sem2;//stores user input
     cout<<"Enter your semester 2 mark: ";
     cin>>sem2;
     return sem2;
 }
 
 double exam(){
-    double exam;
+    double exam;//stores user input
     cout<<"Enter your exam mark: ";
     cin>>exam;
     return exam;
 }
 
 double final(string modules[], double sem1[], double sem2[], double exams[], size_t size) {
-    double total = 0.0;
+    double total = 0.0;//stores calculted total for user
 
         if(modules[size]=="WTW 158" || modules[size]=="CHM 171"){
             // - sem1 contributes 25%
@@ -154,7 +154,7 @@ double final(string modules[], double sem1[], double sem2[], double exams[], siz
             total+= (0.25 * sem1[size]) + (0.25 * sem2[size]) + (0.5 * exams[size]);
             
         }else{
-            total+= (0.5*sem1[size])+(0.5*sem2[size]);
+            total+= (0.5*sem1[size])+(0.5*sem2[size]);//sem1-50% & sem2-50%
         }
         return total;
     }
