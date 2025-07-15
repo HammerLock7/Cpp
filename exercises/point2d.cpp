@@ -18,7 +18,7 @@ class Point2d{
         double getX() const{return m_x;}
         double getY() const{return m_y;}
 
-        double distanceTo const(const Point2d& x){// a function to get the distance between two points
+        double distanceTo (const Point2d& x)const{// a function to get the distance between two points
             return std::sqrt((this->m_x - x.getX())*(this->m_x - x.getX()) + (this->m_y - x.getY())*(this->m_y - x.getY()));
         }
 };
