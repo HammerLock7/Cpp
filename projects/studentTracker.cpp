@@ -1,18 +1,23 @@
 #include <iostream>
+#include <vector>
 using namespace std;
 
 double semester1();// A function to change or add semester 1 marks for a chosen module
 double semester2();//A function to change or add semester 2 marks for a chosen module
 double exam();//A function to change or add Exam marks for a chosen module
-double final(string modules[], double sem1[],double sem2[], double exams[], size_t size);//A function to calculate the final mark of all modules based on semester1,semester1 and exam marks
-void view(string modules[], double finalMark[], size_t size);
+
+template<typename T, typename U>
+double final(std::vector<T>& modules, std::vector<U>& sem1, std::vector<U>& sem2, std::vector<U>& exams, size_t size);//A function to calculate the final mark of all modules based on semester1,semester1 and exam marks
+
+template<typename T, typename U>
+void view(std::vector<T>& modules, std::vector<U>& finalMark, size_t size);
 int main(){
-    string modules[]={"WTW 158", "JSU 110", "JPO 110", "CHM 171", "JPO 111", "JPO 116"};// An array that will capture all the modules we are doing
-    double sem1[6];// An array to record semester 1 marks in
-    double sem2[6];// Array for semester 2 marks
-    double exams[2];// Array for exam marks
-    double finalMark[6];// Array for final marks
-    size_t size= sizeof(modules)/sizeof(modules[0]);// size for the modules im doing 
+    std::vector<std::string> modules{"WTW 158", "JSU 110", "JPO 110", "CHM 171", "JPO 111", "JPO 116"};// An array that will capture all the modules we are doing
+    std::vector<double> sem1(6);// An array to record semester 1 marks in
+    std::vector<double> sem2(6);// Array for semester 2 marks
+    std::vector<double> exams(2);// Array for exam marks
+    std::vector<double> finalMark(6);// Array for final marks
+    size_t size= modules.size();// size for the modules im doing 
     int answer;// object to store input from user
     int counter{};
     cout<<"For which module do you want to check: \n";
@@ -144,7 +149,8 @@ double exam(){
     return exam;
 }
 
-double final(string modules[], double sem1[], double sem2[], double exams[], size_t size) {
+template<typename T, typename U>
+double final(std::vector<T>& modules, std::vector<U>& sem1, std::vector<U>& sem2, std::vector<U>& exams, size_t size) {
     double total = 0.0;//stores calculted total for user
 
         if(modules[size]=="WTW 158" || modules[size]=="CHM 171"){
@@ -159,8 +165,8 @@ double final(string modules[], double sem1[], double sem2[], double exams[], siz
         return total;
     }
     
-
-void view(string modules[], double finalMark[], size_t size){
+template<typename T, typename U>
+void view(std::vector<T>& modules, std::vector<U>& finalMark, size_t size){
     cout<<"********************************************FInal Results********************************************\n";
     for(size_t i{}; i<size; i++){
         cout<<(i+1)<<". "<<modules[i]<<": "<<finalMark[i]<<'\n';
